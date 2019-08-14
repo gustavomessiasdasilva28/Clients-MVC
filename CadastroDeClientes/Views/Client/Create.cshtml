@@ -1,0 +1,352 @@
+﻿@model CadastroDeClientes.Models.ClientModel
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://rawgit.com/RobinHerbots/Inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+<h2 class="text-center">XYZ</h2>
+
+<div class="container">
+
+    <form id="newClientForm" class="well form-horizontal" action="@Url.Action("Create","Client")" method="post">
+        <fieldset>
+            <legend><center><h2><b>Novo Cliente</b></h2></center></legend><br>
+
+            <center><h4>Informações Básicas</h4></center>
+            <div class="form-group">
+                <label for="Name" class="col-md-4 control-label">Nome Completo</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @*<input name="Name" id="Name" placeholder="Nome Completo" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.Name, Model.Name, new { @class = "form-control", @placeholder = "Nome Completo", required = "required", })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Birthdate" class="col-md-4 control-label">Data de Nascimento</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        @*<input name="Birthdate" id="Birthdate" placeholder="Data de Aniversário" class="form-control" type="date">*@
+                        @Html.TextBoxFor(x => x.Birthdate, new { @type = "date", @class = "form-control", @id= "birthdate", @placeholder = "Data de Aniversário", required = "required" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="RG" class="col-md-4 control-label">RG</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @*<input name="RG" id="RG" placeholder="000000000" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.RG, Model.RG, new { @class = "form-control", @placeholder = "000000000", @id = "rg", required = "required" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="CPF" class="col-md-4 control-label">CPF</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @*<input name="CPF" id="CPF" placeholder="00000000000" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.CPF, Model.CPF, new { @class = "form-control", @placeholder = "000.000.000-00", @id = "cpf", required = "required" })
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <center><h4>Redes Sociais</h4></center>
+            <div class="form-group">
+                <label for="Facebook" class="col-md-4 control-label">Facebook</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                        @*<input name="Facebook" id="Facebook" placeholder="www.facebook.com/stevejobs" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.Facebook, Model.Facebook, new { @class = "form-control", @placeholder = "www.facebook.com/stevejobs" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Twitter" class="col-md-4 control-label">Twitter</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                        @*<input name="Twitter" id="Twitter" placeholder="www.twitter.com/stevejobs" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.Twitter, Model.Twitter, new { @class = "form-control", @placeholder = "www.twitter.com/stevejobs" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Instagram" class="col-md-4 control-label">Instagram</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                        @*<input name="Instagram" id="Instagram" placeholder="www.instagram.com/stevejobs" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.Instagram, Model.Instagram, new { @class = "form-control", @placeholder = "www.instagram.com/stevejobs" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Linkedin" class="col-md-4 control-label">Linkedin</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                        @*<input name="Linkedin" id="Linkedin" placeholder="www.linkedin.com/stevejobs" class="form-control" type="text">*@
+                        @Html.TextBoxFor(x => x.Linkedin, Model.Linkedin, new { @class = "form-control", @placeholder = "www.linkedin.com/stevejobs" })
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <center><h4>Telefone Residencial</h4></center>
+
+            <div id="resPhones">
+                <div id="allResPhones">
+                    @*@for (var i = 0; i < Model.Telephones.Count(); i++)
+                        {*@
+
+                    <div class="form-group">
+                        <label for="TelephoneM.ResidencialPhoneDDD" class="col-md-4 control-label">DDD</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.DDD" id="Telephones.DDD" placeholder="Ex: 11" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.ResidencialPhoneDDD, Model.TelephoneM.ResidencialPhoneDDD, new { @class = "form-control", @id = "resDDD", @placeholder = "Ex: 11" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TelephoneM.ResidencialPhone" class="col-md-4 control-label">Numero Residencial </label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.TelephoneType" id="Telephones.TelephoneType" placeholder="Ex: Telefone Residencial" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.ResidencialPhone, Model.TelephoneM.ResidencialPhone, new { @class = "form-control", @id="resPhone", @placeholder = "Telefone Residencial" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr />
+
+            <center><h4>Telefone Comercial</h4></center>
+
+            <div id="comPhones">
+                <div id="allComPhones">
+                    @*@for (var i = 0; i < Model.Telephones.Count(); i++)
+                        {*@
+
+                    <div class="form-group">
+                        <label for="TelephoneM.ComercialPhoneDDD" class="col-md-4 control-label">DDD</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.DDD" id="Telephones.DDD" placeholder="Ex: 11" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.ComercialPhoneDDD, Model.TelephoneM.ComercialPhoneDDD, new { @class = "form-control", @id = "comDDD", @placeholder = "Ex: 11" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TelephoneM.ComercialPhone" class="col-md-4 control-label">Numero Comercial</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.TelephoneType" id="Telephones.TelephoneType" placeholder="Ex: Telefone Residencial" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.ComercialPhone, Model.TelephoneM.ComercialPhone, new { @class = "form-control", @id = "comPhone", @placeholder = "Telefone Comercial" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <hr />
+
+            <center><h4>Celular</h4></center>
+
+            <div id="cellPhones">
+                <div id="allCellPhones">
+                    @*@for (var i = 0; i < Model.Telephones.Count(); i++)
+                        {*@
+
+                    <div class="form-group">
+                        <label for="TelephoneM.CellPhoneDDD" class="col-md-4 control-label">DDD</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.DDD" id="Telephones.DDD" placeholder="Ex: 11" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.CellPhoneDDD, Model.TelephoneM.CellPhoneDDD, new { @class = "form-control", @id = "celDDD", @placeholder = "Ex: 11" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TelephoneM.CellPhone" class="col-md-4 control-label">Numero do Celular</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                @*<input name="Telephones.TelephoneType" id="Telephones.TelephoneType" placeholder="Ex: Telefone Residencial" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.TelephoneM.CellPhone, Model.TelephoneM.CellPhone, new { @class = "form-control", @id = "celPhone", @placeholder = "Celular" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <hr />
+
+
+            <center><h4>Endereço Residencial</h4></center>
+
+            <div id="resAdresses">
+                <div id="allResAdresses">
+                    <div class="form-group">
+                        <label for="AdressesM.ResStreetAddress" class="col-md-4 control-label">Logradouro</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses[@i].StreetAddress" id="Adresses[@i].StreetAddress" placeholder="Av. Paulista" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ResStreetAddress, Model.AdressesM.ResStreetAddress, new { @class = "form-control", @placeholder = "Av. Paulista", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ResNeighborhood" class="col-md-4 control-label">Bairro</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.Neighborhood" id="Adresses.Neighborhood" placeholder="Bela Vista" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ResNeighborhood, Model.AdressesM.ResNeighborhood, new { @class = "form-control", @placeholder = "Bela Vista", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ResCity" class="col-md-4 control-label">Cidade</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.City" id="Adresses.City" placeholder="São Paulo" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ResCity, Model.AdressesM.ResCity, new { @class = "form-control", @placeholder = "São Paulo", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ResState" class="col-md-4 control-label">Estado</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.State" id="Adresses.State" placeholder="São Paulo" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ResState, Model.AdressesM.ResState, new { @class = "form-control", @placeholder = "São Paulo", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM[i].ResZipCode" class="col-md-4 control-label">CEP</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.ZipCode" id="Adresses.ZipCode" placeholder="01310-923" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ResZipCode, Model.AdressesM.ResZipCode, new { @class = "form-control", @placeholder = "01310-923", @id = "resZip", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <center><h4>Endereço Comercial</h4></center>
+
+            <div id="comAdresses">
+                <div id="allComAdresses">
+                    <div class="form-group">
+                        <label for="AdressesM.ComStreetAddress" class="col-md-4 control-label">Logradouro</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses[@i].StreetAddress" id="Adresses[@i].StreetAddress" placeholder="Av. Paulista" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ComStreetAddress, Model.AdressesM.ComStreetAddress, new { @class = "form-control", @placeholder = "Av. Paulista" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ComNeighborhood" class="col-md-4 control-label">Bairro</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.Neighborhood" id="Adresses.Neighborhood" placeholder="Bela Vista" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ComNeighborhood, Model.AdressesM.ComNeighborhood, new { @class = "form-control", @placeholder = "Bela Vista" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ComCity" class="col-md-4 control-label">Cidade</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.City" id="Adresses.City" placeholder="São Paulo" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ComCity, Model.AdressesM.ComCity, new { @class = "form-control", @placeholder = "São Paulo" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM.ComState" class="col-md-4 control-label">Estado</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.State" id="Adresses.State" placeholder="São Paulo" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ComState, Model.AdressesM.ComState, new { @class = "form-control", @placeholder = "São Paulo" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AdressesM[i].ComZipCode" class="col-md-4 control-label">CEP</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                @*<input name="Adresses.ZipCode" id="Adresses.ZipCode" placeholder="01310-923" class="form-control" type="text">*@
+                                @Html.TextBoxFor(x => x.AdressesM.ComZipCode, Model.AdressesM.ComZipCode, new { @class = "form-control", @id = "comZip", @placeholder = "01310-923" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="submit" id="save" class="btn btn-primary btn-lg gradient" style="width:30%;" />
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+﻿@model List<CadastroDeClientes.Models.ClientModel>
+@{
+    ViewData["Title"] = "Bem Vindo!";
+}
+
+<h2>Área de Clientes</h2>
+
+
+<table id="table" class="table" style="width:100%">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td>@client.Name</td>
+                    <td>@client.RG</td>
+                    <td>@client.CPF</td>
+                    <td>
+
+                        @Html.ActionLink("Editar", "Edit","Client", new { @id = client.ID }, new { @class = "btn btn-primary" })
+
+                        @*<form action="@Url.Action("Edit","Client",new { @id= client.ID})">
+                            <input type="submit" class="btn" id="editButton" name="editButton" value="Editar" />
+                        </form>*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

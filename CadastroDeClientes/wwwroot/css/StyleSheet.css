@@ -1,0 +1,8 @@
+﻿.formError
+{
+    color: darkred !important;
+}
+
+.formSuccess {
+    color: green;
+}
