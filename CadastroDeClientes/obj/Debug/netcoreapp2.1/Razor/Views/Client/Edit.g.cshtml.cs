@@ -70,7 +70,7 @@ using CadastroDeClientes.Models;
     ");
             EndContext();
             BeginContext(348, 21442, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "012e2457a6a641028b10e0785dfd43e2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "77277e42b4fe4cbd853b532eaf5034ce", async() => {
                 BeginContext(455, 34, true);
                 WriteLiteral("\r\n        <span class=\"formError\">");
                 EndContext();

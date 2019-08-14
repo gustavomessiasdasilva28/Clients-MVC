@@ -20,19 +20,23 @@
         {
             @foreach (var client in Model)
             {
-                <tr>
-                    <td>@client.Name</td>
-                    <td>@client.RG</td>
-                    <td>@client.CPF</td>
-                    <td>
+        <tr>
+            <td>@client.Name</td>
+            <td>@client.RG</td>
+            <td>@client.CPF</td>
+            <td>
 
-                        @Html.ActionLink("Editar", "Edit","Client", new { @id = client.ID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Editar", "Edit", "Client", new { @id = client.ID }, new { @class = "btn btn-primary" })
 
-                        @*<form action="@Url.Action("Edit","Client",new { @id= client.ID})">
-                            <input type="submit" class="btn" id="editButton" name="editButton" value="Editar" />
-                        </form>*@
-                    </td>
-                </tr>
+                @*<form action="@Url.Action("Edit","Client",new { @id= client.ID})">
+                <input type="submit" class="btn" id="editButton" name="editButton" value="Editar" />
+            </form>*@
+            </td>
+            <td>
+                @*<a id="delete" href="@Url.Action("Delete",new {Id= client.ID })">delete</a>*@
+                @Html.ActionLink("Excluir", "Delete", "Client", new { @id = client.ID }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
             }
         }
     </tbody>

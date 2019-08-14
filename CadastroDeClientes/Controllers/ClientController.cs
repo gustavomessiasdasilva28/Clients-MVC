@@ -175,6 +175,39 @@ namespace CadastroDeClientes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public ActionResult Delete(int id)
+        {
+            Client c = _dbc.Clients.Find(id);
+            _dbc.Clients.Remove(c);
+            _dbc.SaveChanges();
+            return RedirectToAction("Index", new { id = default(int) });
+        }
+
+        // GET: /Funcionario/Delete/5
+        //[HttpGet]
+        //public ActionResult Delete(int id)
+        //{
+        //    Client client = _dbc.Clients.Include(x => x.AdressesM).Include(x => x.TelephoneM).FirstOrDefault(x => x.ID == id);
+        //    return View("Index");
+        //}
+
+        //// POST: /Funcionario/Delete/5
+
+        //[HttpPost, ActionName("Delete")]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    try { 
+        //    Client client = _dbc.Clients.Find(id);
+        //    _dbc.Clients.Remove(client);
+        //    _dbc.SaveChanges();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        e.Message.ToString();
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
 
     }
 }

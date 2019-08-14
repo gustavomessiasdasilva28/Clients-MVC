@@ -72,7 +72,7 @@ using CadastroDeClientes.Models;
     ");
             EndContext();
             BeginContext(354, 21205, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "870047637f834bc1bd8190469d90622f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9cb081d1f48470ea1a935985586f28e", async() => {
                 BeginContext(462, 501, true);
                 WriteLiteral(@"
         <fieldset>
