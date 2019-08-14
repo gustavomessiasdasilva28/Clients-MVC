@@ -13,7 +13,7 @@ namespace CadastroDeClientes.Models
         public string CellPhone { get; set; }
 
         //[RegularExpression("([0-9]+)", ErrorMessage = "Coloque somente números")]
-        [StringLength(8, MinimumLength = 8)]
+        //[StringLength(8, MinimumLength = 8)]
         public string ResidencialPhone { get; set; }
 
         //[RegularExpression("([0-9]+)", ErrorMessage = "Coloque somente números")]

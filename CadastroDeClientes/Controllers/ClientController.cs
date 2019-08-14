@@ -17,6 +17,8 @@ namespace CadastroDeClientes.Controllers
         }
 
         // GET: Client
+
+        //METHOD THAT THE PROGRAM WILL START, ALSO IT SHOWS A LIST OF CLIENTS, IF THERE'S ANY.
         public IActionResult Index()
         {
             var clientsModel = _dbc.Clients.Select(cli => new ClientModel { Name = cli.Name, RG = cli.RG, CPF = cli.CPF, ID = cli.ID }).ToList();
@@ -25,6 +27,8 @@ namespace CadastroDeClientes.Controllers
         }
 
         // GET: Client/Create
+
+        //GET METHOD TO CREATE A NEW CLIENT
         [HttpGet]
         public IActionResult Create()
         {
@@ -36,6 +40,8 @@ namespace CadastroDeClientes.Controllers
         }
 
         // POST: Client/Create
+
+        //POST METHOD TO CREATE A NEW CLIENT
         [HttpPost]
         public ActionResult Create(ClientModel model)
         {
@@ -90,6 +96,8 @@ namespace CadastroDeClientes.Controllers
         }
 
         // GET: Client/Edit/5
+
+        //GET METHOD TO EDIT A CLIENT
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -109,14 +117,11 @@ namespace CadastroDeClientes.Controllers
         }
 
         // POST: Client/Edit/5
+
+        //POST METHOD TO EDIT A CLIENT
         [HttpPost]
         public ActionResult Edit(ClientModel model)
         {
-            //Todo:
-            //Colocar o validationSumary na tela - olhar projeto j4s
-            //Colocar validação de modelstate - olhar projeto j4s
-            //Antes de exibir a viewbag o html, colocar um if != null
-            //Validaçoes
             try
             {
                 if (ModelState.IsValid)
@@ -157,9 +162,9 @@ namespace CadastroDeClientes.Controllers
                 else
                 {
                     var errors = ModelState
-.Where(x => x.Value.Errors.Count > 0)
-.Select(x => new { x.Key, x.Value.Errors })
-.ToArray();
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => new { x.Key, x.Value.Errors })
+                    .ToArray();
                 }
             }
             catch (Exception)
